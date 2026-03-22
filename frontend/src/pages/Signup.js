@@ -16,11 +16,14 @@ function Signup() {
     setError("");
 
     try {
-      await axios.post(`${API}/signup`, {
-        email,
-        password,
-      });
+      const res = await axios.post(`${API}/signup`, {
+  email,
+  password,
+}, {
+  withCredentials: true
+});
 
+localStorage.setItem("token", res.data.accessToken);
       navigate("/");
 
     } catch (err) {

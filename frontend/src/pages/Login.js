@@ -16,12 +16,14 @@ function Login() {
     setError("");
 
     try {
-      const res = await axios.post(`${API}/login`, {
-        email,
-        password,
-      });
+ const res = await axios.post(`${API}/login`, {
+  email,
+  password,
+}, {
+  withCredentials: true
+});
 
-      localStorage.setItem("token", res.data.token);
+localStorage.setItem("token", res.data.accessToken);
       navigate("/dashboard");
 
     } catch (err) {
