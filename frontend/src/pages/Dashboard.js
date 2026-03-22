@@ -1,61 +1,40 @@
-
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Dashboard() {
-
   const navigate = useNavigate();
 
-  let user = null;
+  useEffect(() => {
+    const token = localStorage.getItem("token");
 
-  try {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      user = JSON.parse(storedUser);
+    if (!token) {
+      navigate("/");
     }
-  } catch (error) {
-    console.log("Invalid user data in localStorage");
-  }
+  }, []);
 
   const logout = () => {
-
     localStorage.removeItem("token");
-    localStorage.removeItem("user");
-
-    navigate("/login");
-
+    navigate("/");
   };
 
   return (
+    <div style={styles.container}>
+      <div style={styles.card}>
+        <h2>Dashboard 🚀</h2>
+        <p>You are logged in</p>
 
-    <div className="container mt-5">
-
-      <h2>Dashboard</h2>
-
-      <div className="card p-4 mt-3">
-
-        <h4>
-          Welcome {user?.name || "User"}
-        </h4>
-
-        <p>
-          Email: {user?.email || "Not available"}
-        </p>
-
-        <button
-          className="btn btn-danger"
-          onClick={logout}
-        >
+        <button onClick={logout} style={styles.button}>
           Logout
         </button>
-
       </div>
-
     </div>
-
   );
-
 }
 
-export default Dashboard;
+const styles = {
+  container: { height: "100vh", display: "flex", justifyContent: "center", alignItems: "center", background: "#1f4037" },
+  card: { background: "#fff", padding: "30px", borderRadius: "10px" },
+  button: { marginTop: "20px", padding: "10px", background: "red", color: "#fff", border: "none" }
+};
 
+export default Dashboard;

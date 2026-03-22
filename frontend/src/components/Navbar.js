@@ -1,13 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
-  const token = localStorage.getItem("token");
-
   return (
-    <div>
-      <h2>My App</h2>
-      {token ? <p>Logged In</p> : <p>Not Logged In</p>}
-    </div>
+    <nav style={{ padding: "10px", background: "#222" }}>
+      <Link to="/" style={{ color: "#fff", marginRight: "10px" }}>
+        Login
+      </Link>
+      <Link to="/signup" style={{ color: "#fff" }}>
+        Signup
+      </Link>
+    </nav>
   );
 }
 

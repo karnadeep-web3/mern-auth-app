@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 
-function Login() {
+function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -11,21 +11,20 @@ function Login() {
   const navigate = useNavigate();
   const API = process.env.REACT_APP_API_URL;
 
-  const handleLogin = async () => {
+  const handleSignup = async () => {
     setLoading(true);
     setError("");
 
     try {
-      const res = await axios.post(`${API}/login`, {
+      await axios.post(`${API}/signup`, {
         email,
         password,
       });
 
-      localStorage.setItem("token", res.data.token);
-      navigate("/dashboard");
+      navigate("/");
 
     } catch (err) {
-      setError(err.response?.data?.message || "Login failed");
+      setError(err.response?.data?.message || "Signup failed");
     }
 
     setLoading(false);
@@ -34,7 +33,7 @@ function Login() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h2 style={styles.title}>Welcome Back 👋</h2>
+        <h2 style={styles.title}>Create Account 🚀</h2>
 
         {error && <p style={styles.error}>{error}</p>}
 
@@ -52,14 +51,14 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <button style={styles.button} onClick={handleLogin} disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
+        <button style={styles.button} onClick={handleSignup} disabled={loading}>
+          {loading ? "Creating..." : "Sign Up"}
         </button>
 
         <p style={styles.footer}>
-          Don't have an account?{" "}
-          <Link to="/signup" style={styles.link}>
-            Signup
+          Already have an account?{" "}
+          <Link to="/" style={styles.link}>
+            Login
           </Link>
         </p>
       </div>
@@ -73,7 +72,7 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    background: "linear-gradient(135deg, #0f172a, #1e293b)",
+    background: "linear-gradient(135deg, #020617, #334155)",
   },
   card: {
     background: "#ffffff",
@@ -99,7 +98,7 @@ const styles = {
     marginTop: "10px",
     borderRadius: "8px",
     border: "none",
-    background: "#0f172a",
+    background: "#020617",
     color: "#fff",
     cursor: "pointer",
   },
@@ -111,9 +110,9 @@ const styles = {
     marginTop: "15px",
   },
   link: {
-    color: "#0f172a",
+    color: "#020617",
     fontWeight: "bold",
   },
 };
 
-export default Login;
+export default Signup;
