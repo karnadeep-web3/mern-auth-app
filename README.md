@@ -1,21 +1,22 @@
-# 🔐 Full Stack Auth App
+# 🔐 MERN Auth App
 
-A full-stack authentication system with JWT-based login.
+## 🌐 Live Demo
+Frontend: https://mern-auth-app-m42c.vercel.app  
+Backend: https://mern-auth-app-d08b.onrender.com  
 
 ## 🚀 Features
 - User Signup & Login
-- Password hashing (bcrypt)
 - JWT Authentication
-- Protected Routes
-- Responsive UI
+- Protected Dashboard
+- Password hashing (bcrypt)
+- Refresh token system
 
 ## 🛠 Tech Stack
-- Frontend: React.js
-- Backend: Node.js, Express
-- Database: MongoDB
+- React.js
+- Node.js & Express
+- MongoDB Atlas
+- JWT Authentication
 
-## 📦 Installation
-
-```bash
-npm install
-npm start
+## ⚙️ Deployment
+- Frontend: Vercel
+- Backend: Render
