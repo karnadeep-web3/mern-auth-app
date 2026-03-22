@@ -14,7 +14,8 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://https://mern-auth-app-m42c.vercel.app"
+    "https://mern-auth-app-m42c-9kfj0crf2-karnadeep-web3s-projects.vercel.app",
+    "https://mern-auth-app-m42c.vercel.app"
   ],
   credentials: true
 }));
