@@ -11,7 +11,14 @@ const authRoutes = require("./routes/auth");
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://https://mern-auth-app-m42c.vercel.app"
+  ],
+  credentials: true
+}));
+
 app.use(express.json());
 
 // Routes
